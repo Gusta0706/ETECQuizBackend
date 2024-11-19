@@ -1,0 +1,16 @@
+const Usuario = require("../models/Usuario");
+const { CriarUsuario } = require("../utils/Database");
+
+function DeletarUsuario(req, res) {
+    const { id } = req.params;
+
+    DeletarUsuario(id)
+        .then(() => res.status(200).json({ message: "Usuário deletado com sucesso!" }))
+        .catch(err => res.status(500).json({ error: "Erro ao deletar o usuário.", detalhes: err.message }));
+}
+
+module.exports = {
+    main: DeletarUsuario,
+    path: '/user',
+    method: 'DELETE'
+}
